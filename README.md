@@ -5,3 +5,8 @@ State estimation is the process of inferring the unobservable variables or "stat
 ## Kinematic Bicycle Model
 The kinematic bicycle model is a simplified representation of a vehicle's motion, commonly used in robotics, control systems, and autonomous driving. It approximates the vehicle as a point mass with two wheels, allowing for straightforward analysis of its motion based on steering angle and velocity inputs. Despite its simplicity, the kinematic bicycle model provides valuable insights into vehicle dynamics and is a foundation for more complex vehicle models used in simulation and control algorithms.
 ![alt text](./doc/animation.gif)
+
+
+
+## References
+[1] https://github.com/winstxnhdw/KinematicBicycleModel
