@@ -117,6 +117,7 @@ class Fargs:
     rear_left_wheel: plt.Line2D
     rear_axle: plt.Line2D
     measured_position: plt.Line2D
+    estimated_position: plt.Line2D
     annotation: plt.Annotation
     target: plt.Line2D
    
@@ -134,6 +135,7 @@ def animate(frame, fargs):
     rear_left_wheel   = fargs.rear_left_wheel
     rear_axle         = fargs.rear_axle
     measured_position = fargs.measured_position
+    estimated_position = fargs.estimated_position
     annotation        = fargs.annotation
     target            = fargs.target
 
@@ -152,6 +154,15 @@ def animate(frame, fargs):
     rear_axle.set_data(car.x, car.y)
 
     line_label = 'Measured Position'
+    line = [l for l in ax.lines if l.get_label() == line_label][0]
+    x_data = line.get_xdata()
+    y_data = line.get_ydata()
+    x_data = np.append(x_data, car.x+random.normal())
+    y_data = np.append(y_data, car.y+random.normal())
+    measured_position.set_data(x_data, y_data)
+
+
+    line_label = 'Estimated Position'
     line = [l for l in ax.lines if l.get_label() == line_label][0]
     x_data = line.get_xdata()
     y_data = line.get_ydata()
