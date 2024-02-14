@@ -15,7 +15,7 @@ max_steer = radians(33)
 wheelbase = 2.96
 velocity = 10
 pos_scale = 1.0
-interval = 200
+interval = 1000
 dt = 1/50
 
 kinematic_bicycle_model = KinematicBicycleModel(wheelbase, max_steer, dt)

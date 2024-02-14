@@ -8,7 +8,7 @@ import numpy as np
 from models import CNN
 
 # Parameters
-window_size = 50
+window_size = 100
 
 # Load data
 measurements = pd.read_csv('./data/measurements.csv', index_col=0)
@@ -18,12 +18,13 @@ y = states[['X','Y']].to_numpy()
 
 # Preprocess data 
 X_window = sliding_window_view(X, (window_size, X.shape[1])).squeeze()
+print(X_window.shape)
 y_window = y[window_size-1:,:]
 starts = X_window[:,0,:].copy()
-X_train = X_window - starts.reshape(9951, 1, 2)
+X_train = X_window - starts.reshape(49901, 1, 2)
 y_train = y_window - starts
 
-
+print(y_train.shape)
 
 # Instantiate the model
 model = CNN()
@@ -34,19 +35,19 @@ optimizer = optim.Adam(model.parameters(), lr=0.001)
 X_train_tensor = torch.tensor(X_train, dtype=torch.float32)
 Y_train_tensor = torch.tensor(y_train, dtype=torch.float32)
 # Train the model
-epochs = 500
-# for epoch in range(epochs):
-#     optimizer.zero_grad()
-#     outputs = model(X_train_tensor.permute(0, 2, 1))
-#     loss = criterion(outputs, Y_train_tensor)
-#     loss.backward()
-#     optimizer.step()
-#     print(f'Epoch [{epoch+1}/{epochs}], Loss: {loss.item():.4f}')
+epochs = 1000
+for epoch in range(epochs):
+    optimizer.zero_grad()
+    outputs = model(X_train_tensor.permute(0, 2, 1))
+    loss = criterion(outputs, Y_train_tensor)
+    loss.backward()
+    optimizer.step()
+    print(f'Epoch [{epoch+1}/{epochs}], Loss: {loss.item():.4f}')
 
 
 
-# torch.save(model, 'saved_model')
-model = torch.load('saved_model')
+torch.save(model, 'saved_model')
+# model = torch.load('nn_model.pt')
 model.eval()
 with torch.no_grad():
     test_tensor = torch.tensor([X_train[0]], dtype=torch.float32)
