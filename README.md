@@ -1,4 +1,5 @@
 # Deep Learning based State Estimation    
+Simplified schema of a 1D CNN:    
 ![Neural Network](./doc/cnn.png)
 
 ## State Estimation    
