@@ -24,7 +24,7 @@ class Simulation:
         self.dt = 1/fps
         self.map_size_x = 30
         self.map_size_y = 20
-        self.frames = 2500
+        self.frames = 600
         self.loop = False
 
 
@@ -240,7 +240,7 @@ def main():
     )]
 
     anim = FuncAnimation(fig, animate, frames=sim.frames, init_func=lambda: None, fargs=fargs, interval=interval, repeat=sim.loop)
-    # anim.save('animation.gif', writer='imagemagick', fps=50)
+    anim.save('animation.gif', fps=50)
     
     plt.grid()
     plt.show()
