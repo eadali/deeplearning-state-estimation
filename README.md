@@ -1,4 +1,6 @@
 # Deep Learning based State Estimation    
+![Neural Network](./doc/cnn.png)
+
 ## State Estimation    
 State estimation is the process of inferring the unobservable variables or "state" of a system based on observed data and a mathematical model of the system dynamics. It plays a crucial role in various fields such as control theory, robotics, and signal processing. Through techniques like Kalman filtering or particle filtering, state estimation enables predictions, control decisions, and system understanding even in the presence of uncertainty or noise. It's a fundamental tool for making informed decisions and achieving accurate control in complex systems.
 ![State Estimation](./doc/animation.gif)
